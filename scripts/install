@@ -155,6 +155,13 @@ echo ""
 echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
+
+cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt
+wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz &>/dev/null
+tar -xf scripts.tar.gz
+rm -rf scripts.tar.gz
+cd -
+
 if [ $version = 1 ]
 then
 	wget https://raw.githubusercontent.com/Ilya114/Box64Droid/main/scripts/box64droid &>/dev/null
@@ -200,6 +207,7 @@ then
 else
 	&>/dev/null
 fi
+$PREFIX/bin/start-box64droid
 clear
 echo ""
 echo " Install finished. To start Box64Droid type 'box64droid --start', to see more arguments type 'box64droid --help'"

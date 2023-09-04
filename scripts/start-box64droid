@@ -16,6 +16,19 @@ command+=" /usr/bin/env -i"
 command+=" HOME=/root"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
 command+=" TERM=$TERM"
+if [ ! -f $PREFIX/updated_linux ]; then
+    command+=" /bin/bash apt-get update -y && apt-get install --reinstall -y winbind && apt-get install -y zstd wget pv pip libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio"
+    com="$@"
+    if [ -z "$1" ];then
+        exec $command
+    else
+        $command -c "$com"
+    fi
+    touch $PREFIX/updated_linux
+    echo ""
+    echo "Updates finished"
+    clear
+fi
 command+=" /bin/bash --login"
 com="$@"
 if [ -z "$1" ];then
