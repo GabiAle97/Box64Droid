@@ -221,7 +221,9 @@ then
 else
 	&>/dev/null
 fi
-$PREFIX/bin/start-box64droid
+
+$PREFIX/bin/box64droid --start
+
 clear
 echo ""
 echo " Install finished. To start Box64Droid type 'box64droid --start', to see more arguments type 'box64droid --help'"
