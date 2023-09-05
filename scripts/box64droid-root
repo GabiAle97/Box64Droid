@@ -21,7 +21,15 @@ then
 	sudo mount --bind $PREFIX/tmp/.X11-unix $ROOTFSPATH/tmp/.X11-unix
 	echo "Starting Box64Droid..."
         echo ""
-	sudo chroot $ROOTFSPATH /bin/su 
+	sudo chroot $ROOTFSPATH /bin/su -c "apt-get update -y && apt-get install --reinstall -y winbind && apt-get install -y zstd wget pv pip libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio"
+	sudo chroot $ROOTFSPATH /bin/su -
+	sudo umount $ROOTFSPATH/proc
+	sudo umount $ROOTFSPATH/sys
+	sudo umount $ROOTFSPATH/dev/pts
+	sudo umount $ROOTFSPATH/dev
+	sudo umount $ROOTFSPATH/sdcard
+	sudo umount $ROOTFSPATH/tmp/.X11-unix
+	pkill -f "app_process / com.termux.x11"
 elif [ $1 = "--update" ]
 then
 	cd ~/
