@@ -155,16 +155,26 @@ echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
 
+clear
 if [ $version = 2 ]
 then
+	echo "root"
 	cd ~/ubuntu/opt
+	read
 else
+	echo "non-root"
 	cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt
+	read
 fi
-sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz &>/dev/null
+sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
+read
 sudo tar -xf scripts.tar.gz
+read
 sudo rm -rf scripts.tar.gz
+read
 cd -
+pwd
+read
 
 if [ $version = 1 ]
 then
