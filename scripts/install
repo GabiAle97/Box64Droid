@@ -212,7 +212,7 @@ else
 	&>/dev/null
 fi
 
-$PREFIX/bin/box64droid --start
+. $PREFIX/bin/box64droid --start
 
 clear
 echo ""
