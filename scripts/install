@@ -220,7 +220,5 @@ fi
 
 clear
 echo ""
-echo " Install finished. To start Box64Droid type 'box64droid --start', to see more arguments type 'box64droid --help'"
-echo ""
-echo " And if everything goes as planned, the Wine and 7-Zip file manager will start."
+echo "See you later! To start Box64Droid again, type 'box64droid --start', to see more arguments type 'box64droid --help'"
 echo ""
