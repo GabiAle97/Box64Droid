@@ -217,7 +217,7 @@ else
 fi
 
 . $PREFIX/bin/box64droid --start
-
+read
 clear
 echo ""
 echo "See you later! To start Box64Droid again, type 'box64droid --start', to see more arguments type 'box64droid --help'"
