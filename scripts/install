@@ -154,7 +154,7 @@ echo ""
 echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
-
+pwd
 if [ $version = 2 ]
 then
 	cd ~/ubuntu/opt
