@@ -142,7 +142,7 @@ echo ""
 echo " Installing rootfs, please wait..."
 if [ $version = 1 ]
 then
-	proot-distro restore box64droid-rootfs.tar.xz &>/dev/null
+	proot-distro restore box64droid-rootfs-beta.tar.xz &>/dev/null
 elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu
@@ -154,7 +154,7 @@ echo ""
 echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
-
+pwd
 if [ $version = 2 ]
 then
 	cd ~/ubuntu/opt
