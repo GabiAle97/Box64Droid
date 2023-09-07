@@ -215,6 +215,7 @@ then
 else
 	&>/dev/null
 fi
+read
 . $PREFIX/bin/box64droid --start
 clear
 echo ""
