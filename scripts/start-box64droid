@@ -18,7 +18,6 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=$TERM"
 command+=" /bin/bash --login"
 if [ ! -f $PREFIX/updated_linux ]; then
-    read
     com="apt-get update -y && apt-get install --reinstall -y winbind && apt-get install -y zstd wget pv pip libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio"
     $command -c "$com"
     touch $PREFIX/updated_linux

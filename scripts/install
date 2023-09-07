@@ -128,7 +128,7 @@ then
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu &>/dev/null
-	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs.tar.xz
+	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-beta.tar.xz
 elif [ $version = 2 ]
 then
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-chroot.tar.xz
@@ -215,9 +215,7 @@ then
 else
 	&>/dev/null
 fi
-read
 . $PREFIX/bin/box64droid --start
-read
 clear
 echo ""
 echo "See you later! To start Box64Droid again, type 'box64droid --start', to see more arguments type 'box64droid --help'"
