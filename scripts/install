@@ -128,7 +128,7 @@ then
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu &>/dev/null
-	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-beta.tar.xz
+	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs.tar.xz
 elif [ $version = 2 ]
 then
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-chroot.tar.xz
@@ -142,7 +142,7 @@ echo ""
 echo " Installing rootfs, please wait..."
 if [ $version = 1 ]
 then
-	proot-distro restore box64droid-rootfs-beta.tar.xz &>/dev/null
+	proot-distro restore box64droid-rootfs.tar.xz &>/dev/null
 elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu
