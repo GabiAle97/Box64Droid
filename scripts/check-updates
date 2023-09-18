@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Get the latest commit SHA from the repository
+latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?per_page=1" | jq -r '.[0].sha')
+
+# Check if the latest commit SHA is different from the one you have
+if [ "$latest_commit" != "$(cat latest_commit.txt 2>/dev/null)" ]; then
+  echo "There is a new commit!"
+  echo "Do you want to perform a FULL update of Box64Droid now? (Y/N)"
+  echo ""
+  read confirm
+  if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]
+  then 
+    rm $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt/updated-ubuntu
+    cd ~/
+    curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install
+    echo "$latest_commit" > latest_commit.txt
+  fi
+else
+  echo "No new commits."
+fi
+
+# Get the latest release tag from the repository
+latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.tag_name')
+
+# Check if the latest release tag is different from the one you have
+if [ "$latest_release" != "$(cat latest_release.txt 2>/dev/null)" ]; then
+  echo "There is a new release!"
+  echo "It's STRONGLY recommended to update this, since it would come with some fixes and/or new wine/turnip versions,"
+  echo "but it isn't mandatory if you're happy with the actual performance."
+  echo "Continue updating? (Y/N)"
+  echo ""
+  read confirm
+  if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]
+  then 
+    if [ -f ~/ubuntu/opt ]
+	then
+		cd ~/ubuntu/opt
+		sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
+		sudo tar -xf scripts.tar.gz
+		sudo rm -rf scripts.tar.gz
+	else
+		cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt
+		wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
+		tar -xf scripts.tar.gz
+		rm -rf scripts.tar.gz
+	fi
+  fi
+  echo "$latest_release" > latest_release.txt
+else
+  echo "No new releases."
+fi
