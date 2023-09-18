@@ -1,11 +1,14 @@
 #!/bin/bash
 
-pkg install jq -y
+if ! pkg show -q jq ; then
+    pkg update
+    pkg install jq -y &>/dev/null
+fi
 latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?per_page=1" | jq -r '.[0].sha')
 echo "$latest_commit" > latest_commit.txt
 latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.tag_name')
 echo "$latest_release" > latest_release.txt
-echo clear
+clear
 echo "Select need Box64Droid version to install:"
 echo "1) Non-root version (Adreno 610-740, Android 12+)"
 echo "2) Root version (Adreno 610-740, Android 10+)"
