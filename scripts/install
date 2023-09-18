@@ -181,17 +181,20 @@ if [ $version = 1 ]
 then
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/box64droid &>/dev/null
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/start-box64droid &>/dev/null
+	wget "https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/check-updates" &>/dev/null
 	chmod +x start-box64droid
 	chmod +x box64droid &>/dev/null
 	mv box64droid start-box64droid $PREFIX/bin/ &>/dev/null
 elif [ $version = 2 ]
 then
+	wget "https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/check-updates" &>/dev/null
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/box64droid-root &>/dev/null
 	chmod +x box64droid-root &>/dev/null
 	mv box64droid-root $PREFIX/bin/box64droid &>/dev/null
 else
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/box64droid-virgl &>/dev/null
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/start-box64droid &>/dev/null
+	wget "https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/check-updates" &>/dev/null
 	chmod +x start-box64droid
 	chmod +x box64droid-virgl &>/dev/null
 	mv box64droid-virgl $PREFIX/bin/box64droid &>/dev/null
