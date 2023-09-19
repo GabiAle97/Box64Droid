@@ -3,7 +3,7 @@
 pkg install jq -y &>/dev/null
 latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?per_page=1" | jq -r '.[0].sha')
 echo "$latest_commit" > latest_commit.txt
-latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.tag_name')
+latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.assets[0].updated_at')
 echo "$latest_release" > latest_release.txt
 clear
 echo "Select need Box64Droid version to install:"

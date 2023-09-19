@@ -21,7 +21,7 @@ else
 fi
 
 # Get the latest release tag from the repository
-latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.tag_name')
+latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.assets[0].updated_at')
 
 # Check if the latest release tag is different from the one you have
 if [ "$latest_release" != "$(cat latest_release.txt 2>/dev/null)" ]; then
