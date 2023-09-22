@@ -36,8 +36,29 @@ then
 	pkill -f "app_process / com.termux.x11"
 elif [ $1 = "--update" ]
 then
+	cd ~/ubuntu/opt
+	sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
+	sudo tar -xf scripts.tar.gz
+	sudo rm -rf scripts.tar.gz
+	touch ~/ubuntu/opt/scripts-updated
+elif [ $1 = "--reinstall" ]
+then
+	echo "Uninstalling Box64Droid..."
+	if [ -c ~/ubuntu/dev/urandom ]
+	then
+		sudo umount ~/ubuntu/proc &>/dev/null
+		sudo umount ~/ubuntu/sys &>/dev/null
+		sudo umount ~/ubuntu/dev/pts &>/dev/null
+		sudo umount ~/ubuntu/dev &>/dev/null
+		sudo umount ~/ubuntu/sdcard &>/dev/null
+	else
+		&>/dev/null
+	fi
+	sudo rm -r ~/ubuntu
+	rm $PREFIX/bin/box64droid
+	echo "Done!"
 	cd ~/
-        curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install
+	curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install
 elif [ $1 = "--uninstall" ]
 then
         echo "Uninstalling Box64Droid..."

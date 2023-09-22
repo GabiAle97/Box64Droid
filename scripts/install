@@ -3,7 +3,7 @@
 pkg install jq -y &>/dev/null
 latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?per_page=1" | jq -r '.[0].sha')
 echo "$latest_commit" > latest_commit.txt
-latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.assets[0].updated_at')
+latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.assets[] | select(.name == "scripts.tar.gz").updated_at')
 echo "$latest_release" > latest_release.txt
 clear
 echo "Select need Box64Droid version to install:"
@@ -60,7 +60,7 @@ then
 		elif [ $choice = yes ] || [ $choice = y ]
                 then
                         mv $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/root/.wine ~/
-			mv $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt/wine ~/
+						mv $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt/wine ~/
                         echo " Backup finished"
                         echo ""
                 elif [ $choice = no ] || [ $choice = n ]
@@ -81,7 +81,7 @@ else
                 elif [ $choice = yes ] || [ $choice = y ]
                 then
                         sudo mv /data/data/com.termux/files/home/ubuntu/root/.wine ~/
-			sudo mv /data/data/com.termux/files/home/ubuntu/opt/wine ~/
+						sudo mv /data/data/com.termux/files/home/ubuntu/opt/wine ~/
                         echo " Backup finished"
                         echo ""
                 elif [ $choice = no ] || [ $choice = n ]
@@ -168,13 +168,14 @@ then
 	sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
 	sudo tar -xf scripts.tar.gz
 	sudo rm -rf scripts.tar.gz
+	sudo touch ~/ubuntu/opt/scripts-updated
 else
-	cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt
+	cd $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt
 	wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
 	tar -xf scripts.tar.gz
 	rm -rf scripts.tar.gz
+	touch $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt/scripts-updated
 fi
-
 cd -
 
 if [ $version = 1 ]

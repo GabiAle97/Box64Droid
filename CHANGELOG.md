@@ -1,4 +1,5 @@
 CHANGELOG:
+- FIRST RELEASE (From now on: v1)
 - Added Wine 8.16 by Kron4ek (testing)
 - Added Wine-GE 8.15 by Glorious Eggroll (testing)
 - Native instance already has Turnip 23.1.7

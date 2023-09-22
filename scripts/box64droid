@@ -17,18 +17,11 @@ then
 	pkill -f "app_process / com.termux.x11"
 elif [ $1 = "--update" ]
 then
-	if [ -f ~/ubuntu/opt ]
-	then
-		cd ~/ubuntu/opt
-		sudo wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
-		sudo tar -xf scripts.tar.gz
-		sudo rm -rf scripts.tar.gz
-	else
-		cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt
-		wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
-		tar -xf scripts.tar.gz
-		rm -rf scripts.tar.gz
-	fi
+	cd $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt
+	wget https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/scripts.tar.gz
+	tar -xf scripts.tar.gz
+	rm -rf scripts.tar.gz
+	touch $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/opt/scripts-updated
 elif [ $1 = "--reinstall" ]
 then
 	echo "Uninstalling Box64Droid..."
