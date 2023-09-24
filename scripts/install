@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pkg install jq -y &>/dev/null
-latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?per_page=1" | jq -r '.[0].sha')
+latest_commit=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/commits?path=scripts&per_page=1" | jq -r '.[0].sha')
 echo "$latest_commit" > latest_commit.txt
 latest_release=$(curl -s "https://api.github.com/repos/GabiAle97/Box64Droid/releases/latest" | jq -r '.assets[] | select(.name == "scripts.tar.gz").updated_at')
 echo "$latest_release" > latest_release.txt
