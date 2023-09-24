@@ -1,3 +1,5 @@
+# V1
+
 CHANGELOG:
 - FIRST RELEASE (From now on: v1)
 - Added Wine 8.16 by Kron4ek (testing)
@@ -20,3 +22,16 @@ CHANGELOG:
   "box64 wine" to "box64 wine64")
 - Now every Box64Droid run will check for updates
   and ask if you want to install them
+
+# V1.0.1
+
+CHANGELOG:
+- Added Wine-GE 8.16 by Glorious Eggroll (testing)
+- Native instance already has Turnip 23.1.8
+- Now every Box64Droid run will check for updates
+  only if there are modified scripts, so if something
+  like CHANGELOG.md is modified, it won't ask for
+  an update.
+- Some libs have been copied to system32 when they're
+  for syswow64, and viceversa. Now they're being copied
+  on the corresponding folder (will see how it behaves)
