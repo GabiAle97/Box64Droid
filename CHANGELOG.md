@@ -47,3 +47,18 @@ CHANGELOG:
 - Rollback system32/syswow64 switching since it doesn't change anything
 - Added some DXVK_D8VK.conf options aiming to improve performance
 - Trying to fix box64/86 update (in progress)
+
+# V1.0.3
+
+CHANGELOG:
+- Wine-GE 8-16 and 8-17 aren't working. They need a Box86 wrappings update
+- Wine 8.16 by Kron4ek isn't working either, same problem as GE
+- Now actual box64droid-rootfs supports DX12 (Thanks Ilya), so older
+  box64droid-rootfs is gone now
+- Now isn't mandatory the box86/64 update at the first run. All kind of 
+  updates are done on "Update Box64, Box86 and System"
+- Changes on DXVK_D8VK.conf:
+  - from "dxgi.maxFrameLatency = 4" to "dxgi.maxFrameLatency = 2"
+  - from "# dxvk.trackPipelineLifetime = Auto" to "dxvk.trackPipelineLifetime = True"
+- Wine-GE 8-15 boots broken sometimes, this is fixed recreating prefix
+- Removed background image since it isn't being seen, and causing graphical glitches

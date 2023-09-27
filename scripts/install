@@ -135,21 +135,7 @@ then
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu &>/dev/null
-	echo ""
-	echo "Trying to go back to previous versions of Box64Droid rootfs."
-	echo "PLEASE select option 1 (default) to use the updated Box64Droid rootfs"
-	echo "and avoid possible errors"
-	echo ""
-	echo "1) Default (use this)"
-	echo "2) Previous box64droid rootfs"
-	echo ""
-	read box_boot
-	if [ $box_boot = 2 ]
-	then
-		wget -q --show-progress https://github.com/GabiAle97/Box64Droid/releases/download/mod_box/box64droid-rootfs.tar.xz
-	else
-		wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs.tar.xz
-	fi
+	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs.tar.xz
 elif [ $version = 2 ]
 then
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-chroot.tar.xz
@@ -164,10 +150,6 @@ echo " Installing rootfs, please wait..."
 if [ $version = 1 ]
 then
 	proot-distro restore box64droid-rootfs.tar.xz &>/dev/null
-	if [ $box_boot = 1 ]
-	then
-		touch /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt/rootfs-updated
-	fi
 elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu
