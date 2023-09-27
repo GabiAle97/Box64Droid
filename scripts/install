@@ -164,6 +164,10 @@ echo " Installing rootfs, please wait..."
 if [ $version = 1 ]
 then
 	proot-distro restore box64droid-rootfs.tar.xz &>/dev/null
+	if [ $box_boot = 1 ]
+	then
+		touch /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt/rootfs-updated
+	fi
 elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu

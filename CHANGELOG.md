@@ -35,3 +35,15 @@ CHANGELOG:
 - Some libs have been copied to system32 when they're
   for syswow64, and viceversa. Now they're being copied
   on the corresponding folder (will see how it behaves)
+
+# V1.0.2
+
+CHANGELOG:
+- Added Wine-GE 8.17 by Glorious Eggroll (testing)
+- Added previous rootfs of Box64Droid since the actual one doesn't
+  support DX12, but this is unstable, so don't use it
+- Wine-GE 8.16 is fixed by the devs, so it could work
+- Fixed saving the native Turnip libs for reset
+- Rollback system32/syswow64 switching since it doesn't change anything
+- Added some DXVK_D8VK.conf options aiming to improve performance
+- Trying to fix box64/86 update (in progress)
