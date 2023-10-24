@@ -11,9 +11,10 @@ echo "1) Non-root version (Adreno 610-740, Android 12+)."
 echo "2) Root version (Adreno 610-740, Android 10+)."
 echo "3) VirGL version (For other GPUs, non-root phones, Android 12+)."
 echo "4) Cancel the Box64Droid installation."
+echo "5) DON'T USE"
 echo ""
 read version
-if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ]
+if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 5 ]
 then
 	&>/dev/null
 elif [ $version = 4 ]
@@ -48,7 +49,7 @@ else
        pkg install pulseaudio wget tsu xkeyboard-config -y &>/dev/null
 fi
 echo ""
-if [ $version = 1 ] || [ $version = 3 ]
+if [ $version = 1 ] || [ $version = 3 ] || [ $version = 5 ]
 then
         if [ -d $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/root/.wine ]
         then
@@ -139,6 +140,12 @@ then
 elif [ $version = 2 ]
 then
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/stable/box64droid-rootfs-chroot.tar.xz
+elif [ $version = 5 ]
+then
+	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
+	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
+	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu &>/dev/null
+	wget -q --show-progress https://github.com/GabiAle97/FexDroid/releases/download/FexDroid/rootfs-test.tar.xz
 else
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
@@ -154,6 +161,9 @@ elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu
 	sudo tar -xJf box64droid-rootfs-chroot.tar.xz -C ~/ubuntu &>/dev/null
+elif [ $version = 5 ]
+then
+	proot-distro restore rootfs-test.tar.xz
 else
 	proot-distro restore box64droid-rootfs-virgl.tar.xz &>/dev/null
 fi
@@ -161,7 +171,6 @@ echo ""
 echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
-pwd
 if [ $version = 2 ]
 then
 	cd ~/ubuntu/opt
