@@ -15,7 +15,7 @@ echo "5) Cancel the Box64Droid installation."
 echo "6) DON'T USE"
 echo ""
 read version
-if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 5 ]
+if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 6 ]
 then
 	&>/dev/null
 elif [ $version = 4 ]
@@ -55,7 +55,7 @@ else
        pkg install pulseaudio wget xkeyboard-config -y &>/dev/null
 fi
 echo ""
-if [ $version = 1 ] || [ $version = 3 ] || [ $version = 5 ]
+if [ $version = 1 ] || [ $version = 3 ] || [ $version = 6 ]
 then
         if [ -d $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/root/.wine ]
         then
@@ -160,7 +160,7 @@ then
 	rm -r ~/.wine &>/dev/null
 	rm -r $PREFIX/glibc &>/dev/null
 fi
-if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 5 ]
+if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 6 ]
 then
 echo " Downloading the preconfigured rootfs..."
 else
@@ -186,7 +186,7 @@ elif [ $version = 4 ]
 then
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/glibc-prefix.tar.xz
 	wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-prefix.tar.xz
-elif [ $version = 5 ]
+elif [ $version = 6 ]
 then
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/ &>/dev/null
 	mkdir /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ &>/dev/null
@@ -194,7 +194,7 @@ then
 	wget -q --show-progress https://github.com/GabiAle97/FexDroid/releases/download/FexDroid/rootfs-test.tar.xz
 fi
 echo ""
-if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 5 ]
+if [ $version = 1 ] || [ $version = 2 ] || [ $version = 3 ] || [ $version = 6 ]
 then
 echo " Installing the rootfs, please wait..."
 else
@@ -214,7 +214,7 @@ elif [ $version = 4 ]
 then
 	tar -xJf glibc-prefix.tar.xz -C $PREFIX/
 	tar -xJf wine-prefix.tar.xz -C $HOME/
-elif [ $version = 5 ]
+elif [ $version = 6 ]
 then
 	proot-distro restore rootfs-test.tar.xz
 fi
@@ -222,7 +222,7 @@ echo ""
 echo " Rootfs installed"
 echo ""
 echo " Downloading Box64Droid starting scripts..."
-if [ $version = 1 ] || [ $version = 5 ]
+if [ $version = 1 ] || [ $version = 6 ]
 then
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/box64droid &>/dev/null
 	wget https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/start-box64droid &>/dev/null
@@ -272,7 +272,7 @@ fi
 if [ -d ~/.wine ]
 then
 
-	if [ $version = 1 ] || [ $version = 3 ] || [ $version = 5 ]
+	if [ $version = 1 ] || [ $version = 3 ] || [ $version = 6 ]
 	then
 		rm -r $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/root/.wine
 		mv ~/.wine $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/root/
