@@ -8,7 +8,10 @@ Español
 Box64Mod es una modificación de [Box64Droid](https://ilya114.github.io/Box64Droid/) que agrega algunas librerías faltantes y agrega algunas configuraciones adicionales de personalización, así como instaladores de nuevas versiones de Turnip y de Wine. Aún no se pueden jugar a TODOS los juegos en 4K 60FPS, de hecho algunos ni siquiera iniciaran, pero si logra correr algunos juegos AAA como RE2/RE3 Remake.
 
 ## Instrucciones de instalación
-Instale [Termux](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk) y [Termux-x11](https://github.com/Ilya114/Box64Droid/releases/download/stable/app-arm64-v8a-debug.apk). Luego, en Termux, corra el siguiente comando instalador: `curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install`
+Instale [Termux](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk) y [Termux-x11](https://github.com/Ilya114/Box64Droid/releases/download/stable/app-arm64-v8a-debug.apk). Luego, en Termux, corra el siguiente comando instalador: 
+```
+curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install
+```
 
 Despues de que la instalación complete, tipee `box64droid --start`, y el script lanzará el menú principal.
 
@@ -35,7 +38,10 @@ Se pueden usar variables de entorno, declaradas en 3 archivos distintos: `DXVK_D
 ## Problemas conocidos
 
 - Error al actualizar paquetes de Termux. Borrar los datos de Termux puede ayudar.
-- Android 12+ puede matar Termux. Verás el siguiente mensaje: `[Process completed (signal 9) - press Enter]`. Para solucionarlo, conecta el dispositivo a una PC, activa "Depuración por USB" y corre el siguiente comando en una terminal: `adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"`
+- Android 12+ puede matar Termux. Verás el siguiente mensaje: `[Process completed (signal 9) - press Enter]`. Para solucionarlo, conecta el dispositivo a una PC, activa "Depuración por USB" y corre el siguiente comando en una terminal:
+```
+adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
+```
 - El menú "Control" en Wine (en Wine Proton 8.0-2 funciona) queda en blanco. Puede abrir el menú `control` usando la opción "Run".
 - Winetricks toma mucho tiempo en abrirse si Proton está instalado (Solo en la versión no-root)
 
