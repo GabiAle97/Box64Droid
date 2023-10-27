@@ -42,7 +42,7 @@ pkg install x11-repo -y &>/dev/null
 echo " x11-repo installed"
 echo ""
 echo " Installing required packages..."
-if [ $version = 1 ]
+if [ $version = 1 ] || [ $version = 6 ]
 then
        pkg install pulseaudio wget xkeyboard-config proot-distro -y &>/dev/null
 elif [ $version = 3 ]
