@@ -8,7 +8,10 @@ English
 Box64Mod is a modification of [Box64Droid](https://ilya114.github.io/Box64Droid/) project with scripts that adds some missing libraries and add some customization configurations, as well as some newer Turnip and Wine installers. Can't launch all games in the world in 4K 60 FPS, note it when you trying launch AAA games, but it does launch some major ones like RE2/RE3 Remake.
 
 ## Installation instructons
-Install [Termux](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk) and [Termux-x11](https://github.com/Ilya114/Box64Droid/releases/download/stable/app-arm64-v8a-debug.apk), then in Termux run Box64Droid install command: `curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install`
+Install [Termux](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk) and [Termux-x11](https://github.com/Ilya114/Box64Droid/releases/download/stable/app-arm64-v8a-debug.apk), then in Termux run Box64Droid install command: 
+```
+curl -o install https://raw.githubusercontent.com/GabiAle97/Box64Droid/main/scripts/install && chmod +x install && ./install
+```
 
 After the installation is completed, type `box64droid --start`, starting script will start Termux-X11 and show start menu.
 
