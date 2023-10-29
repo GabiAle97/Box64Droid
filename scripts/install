@@ -203,13 +203,16 @@ fi
 if [ $version = 1 ]
 then
 	proot-distro restore box64droid-rootfs.tar.xz &>/dev/null
+	echo "no-root" > /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt/version-installed
 elif [ $version = 2 ]
 then
 	sudo mkdir ~/ubuntu
 	sudo tar -xJf box64droid-rootfs-chroot.tar.xz -C ~/ubuntu &>/dev/null
+	echo "root" > ~/ubuntu/opt/version-installed
 elif [ $version = 3 ]
 then
 	proot-distro restore box64droid-rootfs-virgl.tar.xz &>/dev/null
+	echo "virgl" > /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt/version-installed
 elif [ $version = 4 ]
 then
 	tar -xJf glibc-prefix.tar.xz -C $PREFIX/
@@ -217,6 +220,7 @@ then
 elif [ $version = 6 ]
 then
 	proot-distro restore rootfs-test.tar.xz
+	echo "testing" > /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/opt/version-installed
 fi
 echo ""
 echo " Rootfs installed"
